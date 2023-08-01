@@ -1,0 +1,8 @@
+{
+    "Port": 3000,
+    "File": {
+        "Path": "File/",
+        "AutoDelete": true,
+        "AutoDeleteTime": 10
+    }
+}
