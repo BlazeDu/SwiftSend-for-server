@@ -7,7 +7,7 @@
     <title>Airdrop</title>
     <script src="https://cdn.bootcss.com/vue/2.5.21/vue.min.js"></script>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="Upload.js"></script>
 </head>
 
 <body>
@@ -15,10 +15,10 @@
     <h2>一个免费开源的Web传输工具</h2>
     <div class="button-container">
         <!-- 添加点击事件来触发文件选择 -->
-        <button class="button" id="upload" type="button" onclick="handleFileUpload()">
+        <button class="button" id="upload" type="button" onclick="Upload()">
             上传
         </button>
-        <button class="button" id="download" type="button" onclick="handleFileDownload()">
+        <button class="button" id="download" type="button" onclick="window.open('Download.html')">
             下载
         </button>
     </div>

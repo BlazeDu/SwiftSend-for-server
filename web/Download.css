@@ -1,0 +1,79 @@
+* {
+    /* 初始化 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* 100%窗口高度 */
+    min-height: 100vh;
+    /* 弹性布局 水平+垂直居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2c3e50;
+}
+
+#Text {
+    color: white;
+    text-align: center;
+    height: 100px;
+}
+
+.ipt-wrap {
+    /* 相对定位 */
+    position: relative;
+}
+
+.ipt-hidden {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    opacity: 0;
+}
+
+.ipt-content {
+    display: flex;
+}
+
+.ipt-item {
+    width: 50px;
+    height: 65px;
+    border-radius: 6px;
+    background-color: #3f566e;
+    border: 1px solid #3f566e;
+    margin: 0 10px;
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 激活态 */
+.ipt-item.active {
+    border-color: #fff;
+}
+
+/* 光标 */
+.ipt-item.active::after {
+    content: '';
+    width: 1px;
+    height: 30px;
+    background-color: #fff;
+    animation: flicker 0.5s linear infinite alternate;
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
