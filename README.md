@@ -8,11 +8,11 @@ brew install node
 ```
 - 创建一个文件夹,用来存放代码
 ```shell
-mkdir Aridrop
+mkdir Airdrop
 ```
 - 进入文件夹
 ```shell
-cd Aridrop
+cd Airdrop
 ```
 - Node.JS初始化
 ```shell
