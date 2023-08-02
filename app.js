@@ -4,19 +4,41 @@ const config = require('./server_config.json');
 const fs = require('fs');
 const app = express();
 
-// 生成6位纯数字验证码函数
+// 生成验证码
 function generateVerificationCode() {
     const code = Math.floor(100000 + Math.random() * 900000);
     return code.toString();
 }
 
+// 设置文件上传路径
 const upload = multer({
     dest: config.File.Path,
 });
 
-// 文件信息存储对象
 const uploadedFiles = {};
 
+// 自动删除函数
+function deleteFileAfterTimeout(verificationCode, timeout) {
+    setTimeout(() => {
+        const fileInfo = uploadedFiles[verificationCode];
+        if (fileInfo) {
+            const { storedFilename } = fileInfo;
+            const filePath = `${config.File.Path}/${storedFilename}`;
+
+            fs.unlink(filePath, (err) => {
+                if (err)
+                    console.error('删除文件出错:', err);
+                else
+                {
+                    console.log(`文件 ${storedFilename} 在超时后被自动删除。`);
+                    delete uploadedFiles[verificationCode];
+                }
+            });
+        }
+    }, timeout);
+}
+
+// 设置网站静态目录
 app.use(express.static('web'));
 
 app.post('/upload', upload.single('file'), (req, res) => {
@@ -27,13 +49,13 @@ app.post('/upload', upload.single('file'), (req, res) => {
     const verificationCode = generateVerificationCode();
     const originalFilename = req.file.originalname;
     const storedFilename = `${verificationCode}_${originalFilename}`;
-
-    // 在这里可以处理上传的文件，比如将其存储到数据库或服务器的特定目录
     const filePath = `${config.File.Path}/${storedFilename}`;
     fs.renameSync(req.file.path, filePath);
     uploadedFiles[verificationCode] = { storedFilename, originalFilename };
-
     res.json({ message: '文件上传成功', verificationCode });
+    // 自动删除
+    if (config.File.AutoDelete)
+        deleteFileAfterTimeout(verificationCode, config.File.AutoDeleteTime * 60000);
 });
 
 app.get('/download', (req, res) => {
@@ -41,7 +63,7 @@ app.get('/download', (req, res) => {
     const fileInfo = uploadedFiles[verificationCode];
 
     if (!fileInfo) {
-        res.status(404).json({ error: '文件不存在或验证码无效' });
+        res.status(404).json({ error: '验证码无效' });
         return;
     }
 
@@ -53,9 +75,9 @@ app.get('/download', (req, res) => {
     res.download(filePath, originalFilename, (err) => {
         if (err) {
             console.error('Error downloading file:', err);
-            res.status(500).json({ error: '文件下载失败' });
+            res.status(500).json({ error: '下载失败' });
         } else {
-            console.log('文件下载成功');
+            console.log('下载成功');
         }
     });
 });
@@ -65,7 +87,7 @@ app.delete('/delete', (req, res) => {
     const fileInfo = uploadedFiles[verificationCode];
 
     if (!fileInfo) {
-        res.status(404).json({ error: '文件不存在或验证码无效' });
+        res.status(404).json({ error: '验证码无效' });
         return;
     }
 
