@@ -89,23 +89,23 @@ input.addEventListener('input', (e) => {
                             downloadLink.href = url;
                             downloadLink.download = data.filename;
                             downloadLink.click();
-
-                            // 释放链接资源
                             URL.revokeObjectURL(url);
-
-                            // 删除该文件
                             fetch(`/delete?verificationCode=${temp_val}`, {
                                 method: 'DELETE',
                             }).then(() => {
                                 alert('下载成功');
+                                window.location.replace("index.html");
                             });
                         })
                         .catch((error) => {
-                            console.error('Error:', error);
-                            alert('下载失败：' + error.message);
+                            alert("验证码无效");
+                            window.location.replace("index.html");
                         });
-                } else {
-                    alert('验证码无效');
+                }
+                else
+                {
+                    alert('验证码不合法');
+                    window.location.replace("index.html");
                 }
             }
             Download();

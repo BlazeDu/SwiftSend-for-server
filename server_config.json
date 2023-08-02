@@ -3,6 +3,6 @@
     "File": {
         "Path": "File/",
         "AutoDelete": true,
-        "AutoDeleteTime": 10
+        "AutoDeleteTime": 0.5
     }
 }
