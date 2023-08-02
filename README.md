@@ -35,6 +35,10 @@ mkdir Airdrop
 ```shell
 cd Airdrop
 ```
+- 克隆仓库
+```shell
+git clone https://github.com/TechnologyWGJ/Airdrop.git
+```
 - Node.JS初始化
 ```shell
 node init
