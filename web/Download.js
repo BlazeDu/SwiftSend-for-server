@@ -6,6 +6,14 @@ const reg = /^[0-9]{0,6}$/;
 // 临时存储输入的值
 let temp_val = '';
 
+document.addEventListener('DOMContentLoaded', () => {
+    // 获取输入框元素
+    const input = document.querySelector('.ipt-hidden');
+
+    // 将输入框设置为焦点
+    input.focus();
+});
+
 // 输入框获得焦点事件
 input.addEventListener('focus', () => {
     // 光标移到最后
