@@ -1,0 +1,75 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    background-color: #333;
+}
+
+#Name {
+    color: #3eb6ed;
+    font-size: 3rem;
+    margin-top: 20px;
+    /* Adjust the margin-top value to move the heading up */
+}
+
+h2 {
+    color: white;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.button {
+    color: white;
+    background-color: rgb(38, 79, 146);
+    font-size: 1.5rem;
+    padding: 10px 0;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 20px;
+    width: 250px;
+    /* Add initial glowing effect */
+    box-shadow: 0 0 10px rgb(38, 79, 146);
+    /* Add transition for smooth effect */
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.button:hover {
+    /* Expand glowing effect on hover */
+    box-shadow: 0 0 30px rgb(38, 79, 146);
+}
+
+a#return-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    /* Updated left position to move the image to the top left corner */
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+#upload-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 100px;
+}
