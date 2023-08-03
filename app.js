@@ -1,5 +1,6 @@
 const express = require('express');
 const multer = require('multer');
+const path = require('path');
 const config = require('./server_config.json');
 const fs = require('fs');
 const app = express();
@@ -13,6 +14,9 @@ function generateVerificationCode() {
 // 设置文件上传路径
 const upload = multer({
     dest: config.File.Path,
+    limits: {
+        fileSize: 1024 * 1024 * 1024 * config.File.MaxFileSize, // 1GB限制
+    }
 });
 
 const uploadedFiles = {};
@@ -41,9 +45,20 @@ function deleteFileAfterTimeout(verificationCode, timeout) {
 // 设置网站静态目录
 app.use(express.static('web'));
 
+app.get('/api/getMaxFileSize', (req, res) => {
+    const filePath = path.join(__dirname, 'server_config.json');
+    res.sendFile(filePath);
+});
+
 app.post('/upload', upload.single('file'), (req, res) => {
     if (!req.file) {
-        res.status(400).json({ error: "没有文件上传" });
+        res.status(400).json({ error: '没有文件上传' });
+        return;
+    }
+
+    if (req.file.size > config.File.MaxFileSize * 1024 * 1024 * 1024) {
+        fs.unlinkSync(req.file.path);
+        res.status(400).json({ error: `文件大小不能超过${config.File.MaxFileSize}GB` });
         return;
     }
     const verificationCode = generateVerificationCode();
@@ -52,10 +67,12 @@ app.post('/upload', upload.single('file'), (req, res) => {
     const filePath = `${config.File.Path}/${storedFilename}`;
     fs.renameSync(req.file.path, filePath);
     uploadedFiles[verificationCode] = { storedFilename, originalFilename };
-    res.json({ message: '文件上传成功', verificationCode });
+    res.json({ message: '上传成功', verificationCode });
+    console.log("上传成功");
     // 自动删除
-    if (config.File.AutoDelete)
+    if (config.File.AutoDelete) {
         deleteFileAfterTimeout(verificationCode, config.File.AutoDeleteTime * 60000);
+    }
 });
 
 app.get('/download', (req, res) => {
@@ -69,16 +86,13 @@ app.get('/download', (req, res) => {
 
     const { storedFilename, originalFilename } = fileInfo;
     const filePath = `${config.File.Path}/${storedFilename}`;
-    console.log('Download');
-
-    // 使用 res.download() 将文件发送给客户端进行下载
     res.download(filePath, originalFilename, (err) => {
         if (err) {
             console.error('Error downloading file:', err);
             res.status(500).json({ error: '下载失败' });
-        } else {
-            console.log('下载成功');
         }
+        else
+            console.log('下载成功');
     });
 });
 

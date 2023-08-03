@@ -3,6 +3,7 @@
     "File": {
         "Path": "File/",
         "AutoDelete": true,
-        "AutoDeleteTime": 0.5
+        "AutoDeleteTime": 10,
+        "MaxFileSize": 2
     }
 }
