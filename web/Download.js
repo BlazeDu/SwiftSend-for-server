@@ -9,8 +9,6 @@ let temp_val = '';
 document.addEventListener('DOMContentLoaded', () => {
     // 获取输入框元素
     const input = document.querySelector('.ipt-hidden');
-
-    // 将输入框设置为焦点
     input.focus();
 });
 
