@@ -20,9 +20,8 @@ input.addEventListener('focus', () => {
         return;
     }
     // 判断哪一个格子需要设置激活态样式
-    if (val.length < items.length) {
+    if (val.length < items.length)
         items[val.length].classList.add('active');
-    }
     // 最后一格
     if (val.length == items.length) {
         items[val.length - 1].classList.add('active');
