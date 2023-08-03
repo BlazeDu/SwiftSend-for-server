@@ -3,11 +3,9 @@ const input = document.querySelector('.ipt-hidden');
 const items = document.querySelectorAll('.ipt-item');
 // 正则表达式：6位 0-9
 const reg = /^[0-9]{0,6}$/;
-// 临时存储输入的值
 let temp_val = '';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 获取输入框元素
     const input = document.querySelector('.ipt-hidden');
     input.focus();
 });
