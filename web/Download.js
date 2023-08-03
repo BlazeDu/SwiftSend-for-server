@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 输入框获得焦点事件
 input.addEventListener('focus', () => {
-    // 光标移到最后
     input.setSelectionRange(input.value.length - 1, input.value.length);
     const val = input.value;
     if (!val) {
