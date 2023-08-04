@@ -1,17 +1,20 @@
+[English](./README.md) | [简体中文](./README_CN.md)
+
 # Airdrop
-一个免费开源的Web传输工具
+A free and open-source web transfer tool.
 
-# 简介
-## Airdrop是一个高效的Web传输工具
-- Airdrop无需客户端,无需账号,即可快速传输文件
-- Airdrop可以配置文件超时后自动删除,有效防止攻击者恶意向服务器传输大量大文件,将服务器硬盘占满
-- 管理员可以通过Airdrop配置文件,高效管理服务
-- Airdrop支持对文件大小进行限制,防止硬盘空间不足
-## 使用场景
-### 你想给同事传一份文件,又不想加对方QQ,则可以将文件上传到Airdrop,告诉对方验证码就可以实现传输文件
+# Introduction
+## Airdrop is an efficient web transfer tool with the following features:
+- Airdrop allows quick file transfer without the need for a client or account.
+- Airdrop can be configured to automatically delete files after a timeout, effectively preventing attackers from maliciously transferring large files to fill up the server's hard disk.
+- Administrators can efficiently manage the service using Airdrop's configuration file.
+- Airdrop supports file size limitation to prevent insufficient disk space.
 
-# 配置文件
-- 打开server_config.json文件
+## Use Cases
+### When you want to send a file to a colleague without adding them on a messaging platform, you can upload the file to Airdrop and share the verification code for easy file transfer.
+
+# Configuration File
+- Open the `server_config.json` file.
 ```json
 {
     "Port": 3000,
@@ -27,42 +30,42 @@
     }
 }
 ```
-- Port 设置端口
-- Path 设置文件上传路径
-- AutoDelete 是否开启文件自动删除,true为开启,false为关闭
-- AutoDeleteTime 设置自动删除文件的时间
-- CheckFileSize 是否开启文件大小检测,true为开启,false为关闭
-- MaxFileSize 设置文件最大大小
-- MaxRequestNumber 设置用户1分钟最大请求次数
-- 可以根据实际情况更改
+- Port: Set the port number.
+- Path: Set the file upload path.
+- AutoDelete: Enable or disable automatic file deletion. Set to true to enable and false to disable.
+- AutoDeleteTime: Set the time for automatic file deletion.
+- CheckFileSize: Enable or disable file size checking. Set to true to enable and false to disable.
+- MaxFileSize: Set the maximum file size.
+- MaxRequestNumber: Set the maximum number of requests per minute for each user.
+- You can modify these values based on your specific needs.
 
-# 部署
-- 安装Node.JS
+# Deployment
+- Install Node.js
 ```shell
 brew install node
 ```
-- 创建一个文件夹,用来存放代码
+- Create a folder to store the code.
 ```shell
 mkdir Airdrop
 ```
-- 进入文件夹
+- Enter the folder.
 ```shell
 cd Airdrop
 ```
-- 克隆仓库
+- Clone the repository.
 ```shell
 git clone https://github.com/TechnologyWGJ/Airdrop.git
 ```
-- Node.JS初始化
+- Initialize Node.js
 ```shell
 node init
 ```
-- 安装依赖
+- Install dependencies
 ```shell
 npm install express multer express-rate-limit
 ```
-- 运行app.js
+- Run `app.js`
 ```shell
 node app.js
 ```
-- 打开localhost:xxx
+- Open `localhost:xxx` in your web browser.
