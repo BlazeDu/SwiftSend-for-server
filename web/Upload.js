@@ -28,7 +28,7 @@ function Upload() {
                         });
                 })
                 .catch(() => {
-                    alert('无法获取配置');
+                    alert("请求过于频繁");
                 });
         }
     });

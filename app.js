@@ -2,6 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const config = require('./server_config.json');
+const rateLimit = require('express-rate-limit');
 const fs = require('fs');
 const app = express();
 
@@ -16,7 +17,7 @@ if (config.File.CheckFileSize)
     upload = multer({
         dest: config.File.Path,
         limits: {
-            fileSize: 1024 * 1024 * 1024 * config.File.MaxFileSize, // 1GB限制
+            fileSize: 1024 * 1024 * 1024 * config.File.MaxFileSize,
         }
     });
 else
@@ -37,8 +38,7 @@ function deleteFileAfterTimeout(verificationCode, timeout) {
             fs.unlink(filePath, (err) => {
                 if (err)
                     console.error('删除文件出错:', err);
-                else
-                {
+                else {
                     console.log(`文件 ${storedFilename} 在超时后被自动删除。`);
                     delete uploadedFiles[verificationCode];
                 }
@@ -50,12 +50,14 @@ function deleteFileAfterTimeout(verificationCode, timeout) {
 // 设置网站静态目录
 app.use(express.static('web'));
 
-app.get('/api/getMaxFileSize', (req, res) => {
-    const filePath = path.join(__dirname, 'server_config.json');
-    res.sendFile(filePath);
+// 创建限流器，每分钟最多10个请求
+const limiter = rateLimit({
+    windowMs: 60 * 1000, // 1分钟
+    max: config.ServerSafe.MaxRequestNumber, // 最大请求数量
 });
 
-app.post('/upload', upload.single('file'), (req, res) => {
+// 使用限流器中间件来限制对/upload路由的请求速率
+app.post('/upload', limiter, upload.single('file'), (req, res) => {
     if (!req.file) {
         res.status(400).json({ error: '没有文件上传' });
         return;
@@ -74,13 +76,17 @@ app.post('/upload', upload.single('file'), (req, res) => {
     uploadedFiles[verificationCode] = { storedFilename, originalFilename };
     res.json({ message: '上传成功', verificationCode });
     console.log("上传成功");
-    // 自动删除
     if (config.File.AutoDelete) {
         deleteFileAfterTimeout(verificationCode, config.File.AutoDeleteTime * 60000);
     }
 });
 
-app.get('/download', (req, res) => {
+app.get('/api/getMaxFileSize', limiter, (req, res) => {
+    const filePath = path.join(__dirname, 'server_config.json');
+    res.sendFile(filePath);
+});
+
+app.get('/download', limiter, (req, res) => {
     const verificationCode = req.query.verificationCode;
     const fileInfo = uploadedFiles[verificationCode];
 
@@ -101,7 +107,7 @@ app.get('/download', (req, res) => {
     });
 });
 
-app.delete('/delete', (req, res) => {
+app.delete('/delete', limiter, (req, res) => {
     const verificationCode = req.query.verificationCode;
     const fileInfo = uploadedFiles[verificationCode];
 

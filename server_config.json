@@ -6,5 +6,8 @@
         "AutoDeleteTime": 10,
         "CheckFileSize": false,
         "MaxFileSize": 1
+    },
+    "ServerSafe": {
+        "MaxRequestNumber": 10
     }
 }
