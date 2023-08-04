@@ -33,7 +33,7 @@
 - AutoDeleteTime 设置自动删除文件的时间
 - CheckFileSize 是否开启文件大小检测,true为开启,false为关闭
 - MaxFileSize 设置文件最大大小
-- MaxRequestNumber 设置1分钟最大请求次数
+- MaxRequestNumber 设置用户1分钟最大请求次数
 - 可以根据实际情况更改
 
 # 部署
@@ -59,8 +59,7 @@ node init
 ```
 - 安装依赖
 ```shell
-npm install express
-npm install multer
+npm install express multer express-rate-limit
 ```
 - 运行app.js
 ```shell
