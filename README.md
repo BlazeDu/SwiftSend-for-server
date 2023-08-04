@@ -14,14 +14,22 @@
 - 打开server_config.json文件
 ```json
 {
-    "Port": 3000, // 设置端口
+    "Port": 3000,
     "File": {
-        "Path": "File/", // 上传的文件存储路径
-        "AutoDelete": true, // 是否开启文件超时自动删除,true为开启,false为关闭
-        "AutoDeleteTime": 10 // 设置文件超时的时长,单位:min(分)
+        "Path": "File/",
+        "AutoDelete": true,
+        "AutoDeleteTime": 10,
+        "CheckFileSize": false,
+        "MaxFileSize": 1
     }
 }
 ```
+- Port 设置端口
+- Path 设置文件上传路径
+- AutoDelete 是否开启文件自动删除,true为开启,false为关闭
+- AutoDeleteTime 设置自动删除文件的时间
+- CheckFileSize 是否开启文件大小检测,true为开启,false为关闭
+- MaxFileSize 设置文件最大大小
 - 可以根据实际情况更改
 
 # 部署
