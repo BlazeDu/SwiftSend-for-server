@@ -8,10 +8,11 @@ function Upload() {
             fetch('/api/getMaxFileSize')
                 .then(response => response.json())
                 .then(config => {
-                    if (selectedFile.size > config.File.MaxFileSize * 1024 * 1024 * 1024) {
-                        alert(`文件过大，已超过${config.File.MaxFileSize}GB`);
-                        return;
-                    }
+                    if (config.File.CheckFileSize)
+                        if (selectedFile.size > config.File.MaxFileSize * 1024 * 1024 * 1024) {
+                            alert(`文件过大，已超过${config.File.MaxFileSize}GB`);
+                            return;
+                        }
                     const formData = new FormData();
                     formData.append('file', selectedFile);
                     fetch('/upload', {

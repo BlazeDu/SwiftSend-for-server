@@ -12,12 +12,17 @@ function generateVerificationCode() {
 }
 
 // 设置文件上传路径
-const upload = multer({
-    dest: config.File.Path,
-    limits: {
-        fileSize: 1024 * 1024 * 1024 * config.File.MaxFileSize, // 1GB限制
-    }
-});
+if (config.File.CheckFileSize)
+    upload = multer({
+        dest: config.File.Path,
+        limits: {
+            fileSize: 1024 * 1024 * 1024 * config.File.MaxFileSize, // 1GB限制
+        }
+    });
+else
+    upload = multer({
+        dest: config.File.Path
+    });
 
 const uploadedFiles = {};
 
@@ -55,12 +60,12 @@ app.post('/upload', upload.single('file'), (req, res) => {
         res.status(400).json({ error: '没有文件上传' });
         return;
     }
-
-    if (req.file.size > config.File.MaxFileSize * 1024 * 1024 * 1024) {
-        fs.unlinkSync(req.file.path);
-        res.status(400).json({ error: `文件大小不能超过${config.File.MaxFileSize}GB` });
-        return;
-    }
+    if (config.File.CheckFileSize)
+        if (req.file.size > config.File.MaxFileSize * 1024 * 1024 * 1024) {
+            fs.unlinkSync(req.file.path);
+            res.status(400).json({ error: `文件大小不能超过${config.File.MaxFileSize}GB` });
+            return;
+        }
     const verificationCode = generateVerificationCode();
     const originalFilename = req.file.originalname;
     const storedFilename = `${verificationCode}_${originalFilename}`;

@@ -4,6 +4,7 @@
         "Path": "File/",
         "AutoDelete": true,
         "AutoDeleteTime": 10,
-        "MaxFileSize": 2
+        "CheckFileSize": false,
+        "MaxFileSize": 1
     }
 }
