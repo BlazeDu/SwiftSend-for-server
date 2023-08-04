@@ -1,7 +1,7 @@
 [English](./README.md) | [简体中文](./README_CN.md)
 
 # Airdrop
-A free and open-source web transfer tool.
+🔥 A free and open-source web transfer tool.
 
 # Introduction
 ## Airdrop is an efficient web transfer tool with the following features:
@@ -10,11 +10,11 @@ A free and open-source web transfer tool.
 - Administrators can efficiently manage the service using Airdrop's configuration file.
 - Airdrop supports file size limitation to prevent insufficient disk space.
 
-## Use Cases
+## 🔮 Use Cases
 ### When you want to send a file to a colleague without adding them on a messaging platform, you can upload the file to Airdrop and share the verification code for easy file transfer.
 
-# Configuration File
-- Open the `server_config.json` file.
+# ⚙️ Configuration File
+- 📁 Open the `server_config.json` file.
 ```json
 {
     "Port": 3000,
@@ -39,7 +39,7 @@ A free and open-source web transfer tool.
 - MaxRequestNumber: Set the maximum number of requests per minute for each user.
 - You can modify these values based on your specific needs.
 
-# Deployment
+# 🛠️ Deployment
 - Install Node.js
 ```shell
 brew install node
