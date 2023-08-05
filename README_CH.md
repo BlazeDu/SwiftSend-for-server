@@ -13,7 +13,7 @@
 ### 你想给同事传一份文件,又不想加对方QQ,则可以将文件上传到Airdrop,告诉对方验证码就可以实现传输文件
 
 # ⚙️ 配置文件
-- 📁 打开`server_config.json`文件
+- 📁 打开 `server_config.json` 文件
 ```json
 {
     "Port": 3000,
@@ -39,7 +39,7 @@
 - 可以根据实际情况更改
 
 # 🛠️ 部署
-- 安装`Node.JS`
+- 安装 `Node.JS`
 ```shell
 brew install node
 ```
@@ -55,7 +55,7 @@ cd Airdrop
 ```shell
 git clone https://github.com/TechnologyWGJ/Airdrop.git
 ```
-- `Node.JS`初始化
+- `Node.JS` 初始化
 ```shell
 node init
 ```
@@ -63,8 +63,8 @@ node init
 ```shell
 npm install express multer express-rate-limit
 ```
-- 运行`app.js`
+- 运行 `app.js`
 ```shell
 node app.js
 ```
-- 打开`localhost:xxx`
+- 打开 `localhost:xxx`
