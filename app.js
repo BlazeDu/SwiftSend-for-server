@@ -8,7 +8,7 @@ const app = express();
 
 // 生成验证码
 function generateVerificationCode() {
-    const code = Math.floor(100000 + Math.random() * 900000);
+    let code = Math.floor(100000 + Math.random() * 900000);
     return code.toString();
 }
 
@@ -30,10 +30,10 @@ const uploadedFiles = {};
 // 自动删除函数
 function deleteFileAfterTimeout(verificationCode, timeout) {
     setTimeout(() => {
-        const fileInfo = uploadedFiles[verificationCode];
+        let fileInfo = uploadedFiles[verificationCode];
         if (fileInfo) {
-            const { storedFilename } = fileInfo;
-            const filePath = `${config.File.Path}/${storedFilename}`;
+            let { storedFilename } = fileInfo;
+            let filePath = `${config.File.Path}/${storedFilename}`;
 
             fs.unlink(filePath, (err) => {
                 if (err)
@@ -68,10 +68,10 @@ app.post('/upload', limiter, upload.single('file'), (req, res) => {
             res.status(400).json({ error: `文件大小不能超过${config.File.MaxFileSize}GB` });
             return;
         }
-    const verificationCode = generateVerificationCode();
-    const originalFilename = req.file.originalname;
-    const storedFilename = `${verificationCode}_${originalFilename}`;
-    const filePath = `${config.File.Path}/${storedFilename}`;
+    let verificationCode = generateVerificationCode();
+    let originalFilename = req.file.originalname;
+    let storedFilename = `${verificationCode}_${originalFilename}`;
+    let filePath = `${config.File.Path}/${storedFilename}`;
     fs.renameSync(req.file.path, filePath);
     uploadedFiles[verificationCode] = { storedFilename, originalFilename };
     res.json({ message: '上传成功', verificationCode });
@@ -81,22 +81,25 @@ app.post('/upload', limiter, upload.single('file'), (req, res) => {
     }
 });
 
-app.get('/api/getMaxFileSize', limiter, (req, res) => {
-    const filePath = path.join(__dirname, 'server_config.json');
-    res.sendFile(filePath);
+app.get('/api/MaxFileSize', limiter, (req, res) => {
+    res.json({ MaxFileSize: config.File.MaxFileSize });
+});
+
+app.get('/api/CheckFileSize', limiter, (req, res) => {
+    res.json({ CheckFileSize: config.File.CheckFileSize });
 });
 
 app.get('/download', limiter, (req, res) => {
-    const verificationCode = req.query.verificationCode;
-    const fileInfo = uploadedFiles[verificationCode];
+    let verificationCode = req.query.verificationCode;
+    let fileInfo = uploadedFiles[verificationCode];
 
     if (!fileInfo) {
         res.status(404).json({ error: '验证码无效' });
         return;
     }
 
-    const { storedFilename, originalFilename } = fileInfo;
-    const filePath = `${config.File.Path}/${storedFilename}`;
+    let { storedFilename, originalFilename } = fileInfo;
+    let filePath = `${config.File.Path}/${storedFilename}`;
     res.download(filePath, originalFilename, (err) => {
         if (err) {
             console.error('Error downloading file:', err);
@@ -108,16 +111,16 @@ app.get('/download', limiter, (req, res) => {
 });
 
 app.delete('/delete', limiter, (req, res) => {
-    const verificationCode = req.query.verificationCode;
-    const fileInfo = uploadedFiles[verificationCode];
+    let verificationCode = req.query.verificationCode;
+    let fileInfo = uploadedFiles[verificationCode];
 
     if (!fileInfo) {
         res.status(404).json({ error: '验证码无效' });
         return;
     }
 
-    const { storedFilename } = fileInfo;
-    const filePath = `${config.File.Path}/${storedFilename}`;
+    let { storedFilename } = fileInfo;
+    let filePath = `${config.File.Path}/${storedFilename}`;
 
     // 删除文件
     fs.unlink(filePath, (err) => {
