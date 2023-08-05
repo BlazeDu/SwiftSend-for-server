@@ -40,7 +40,7 @@ English | [简体中文](./README_CH.md) | [繁体中文](./README_CH_Hant.md)
 - You can modify these values based on your specific needs.
 
 # 🛠️ Deployment
-- Install Node.js
+- Install `Node.js`
 ```shell
 brew install node
 ```
@@ -56,7 +56,7 @@ cd Airdrop
 ```shell
 git clone https://github.com/TechnologyWGJ/Airdrop.git
 ```
-- Initialize Node.js
+- Initialize `Node.js`
 ```shell
 node init
 ```
