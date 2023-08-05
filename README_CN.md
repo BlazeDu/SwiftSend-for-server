@@ -1,6 +1,7 @@
-[简体中文](./README_CN.md) | [English](./README.md)
 # Airdrop
-一个免费开源的Web传输工具
+🔥 一个免费开源的Web传输工具
+
+简体中文 | [English](./README.md)
 
 # 简介
 ## Airdrop是一个高效的Web传输工具
@@ -8,11 +9,11 @@
 - Airdrop可以配置文件超时后自动删除,有效防止攻击者恶意向服务器传输大量大文件,将服务器硬盘占满
 - 管理员可以通过Airdrop配置文件,高效管理服务
 - Airdrop支持对文件大小进行限制,防止硬盘空间不足
-## 使用场景
+## 🔮 使用场景
 ### 你想给同事传一份文件,又不想加对方QQ,则可以将文件上传到Airdrop,告诉对方验证码就可以实现传输文件
 
-# 配置文件
-- 打开server_config.json文件
+# ⚙️ 配置文件
+- 📁 打开server_config.json文件
 ```json
 {
     "Port": 3000,
@@ -37,7 +38,7 @@
 - MaxRequestNumber 设置用户1分钟最大请求次数
 - 可以根据实际情况更改
 
-# 部署
+# 🛠️ 部署
 - 安装Node.JS
 ```shell
 brew install node
