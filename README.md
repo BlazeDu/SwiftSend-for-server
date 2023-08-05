@@ -1,7 +1,7 @@
-[English](./README.md) | [简体中文](./README_CN.md)
-
 # Airdrop
 🔥 A free and open-source web transfer tool.
+
+English | [简体中文](./README_CN.md)
 
 # Introduction
 ## Airdrop is an efficient web transfer tool with the following features:
