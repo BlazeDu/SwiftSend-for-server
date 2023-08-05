@@ -1,7 +1,7 @@
 # Airdrop
 🔥 一个免费开源的Web传输工具
 
-简体中文 | [English](./README.md)
+简体中文 | [繁体中文](./README_CH_Hant.md) | [English](./README.md)
 
 # 简介
 ## Airdrop是一个高效的Web传输工具
