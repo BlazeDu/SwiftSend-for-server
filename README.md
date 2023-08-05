@@ -1,7 +1,7 @@
 # Airdrop
 🔥 A free and open-source web transfer tool.
 
-English | [简体中文](./README_CN.md)
+English | [简体中文](./README_CN.md) | [繁体中文](./README_CH_Hant.md)
 
 # Introduction
 ## Airdrop is an efficient web transfer tool with the following features:
