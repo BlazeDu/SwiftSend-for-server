@@ -1,17 +1,17 @@
-# Airdrop
+# Stardrop
 一個免費且開源的網頁傳輸工具。
 
 繁体中文 | [简体中文](./README_CH.md) | [English](./README.md)
 
 # 簡介
-## Airdrop是一個高效的Web傳輸工具
-- Airdrop無需客戶端，無需帳號，即可快速傳輸文件
-- Airdrop可以配置文件超時後自動刪除，有效防止攻擊者惡意向伺服器傳輸大量大文件，將伺服器硬盤佔滿
-- 管理員可以通過Airdrop配置文件，高效管理服務
-- Airdrop支持對文件大小進行限制，防止硬盤空間不足
+## Stardrop是一個高效的Web傳輸工具
+- Stardrop無需客戶端，無需帳號，即可快速傳輸文件
+- Stardrop可以配置文件超時後自動刪除，有效防止攻擊者惡意向伺服器傳輸大量大文件，將伺服器硬盤佔滿
+- 管理員可以通過Stardrop配置文件，高效管理服務
+- Stardrop支持對文件大小進行限制，防止硬盤空間不足
 
 ## 使用場景
-### 你想給同事傳一份文件，又不想加對方QQ，則可以將文件上傳到Airdrop，告訴對方驗證碼就可以實現傳輸文件
+### 你想給同事傳一份文件，又不想加對方QQ，則可以將文件上傳到Stardrop，告訴對方驗證碼就可以實現傳輸文件
 
 # 配置文件
 - 打開 `server_config.json` 文件
@@ -46,15 +46,15 @@ brew install node
 ```
 - 創建一個文件夾，用來存放代碼
 ```shell
-mkdir Airdrop
+mkdir Stardrop
 ```
 - 進入文件夾
 ```shell
-cd Airdrop
+cd Stardrop
 ```
 - 克隆倉庫
 ```shell
-git clone https://github.com/TechnologyWGJ/Airdrop.git
+git clone https://github.com/TechnologyWGJ/Stardrop.git
 ```
 - `Node.JS` 初始化
 ```shell
