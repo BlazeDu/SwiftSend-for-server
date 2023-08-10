@@ -1,16 +1,16 @@
-# Stardrop
+# SwiftSend
 🔥 一个免费开源的Web传输工具
 
 简体中文 | [繁体中文](./README_CH_Hant.md) | [English](./README.md)
 
 # 简介
-## Stardrop是一个高效的Web传输工具
-- Stardrop无需客户端,无需账号,即可快速传输文件
-- Stardrop可以配置文件超时后自动删除,有效防止攻击者恶意向服务器传输大量大文件,将服务器硬盘占满
-- 管理员可以通过Stardrop配置文件,高效管理服务
-- Stardrop支持对文件大小进行限制,防止硬盘空间不足
+## SwiftSend是一个高效的Web传输工具
+- SwiftSend无需客户端,无需账号,即可快速传输文件
+- SwiftSend可以配置文件超时后自动删除,有效防止攻击者恶意向服务器传输大量大文件,将服务器硬盘占满
+- 管理员可以通过SwiftSend配置文件,高效管理服务
+- SwiftSend支持对文件大小进行限制,防止硬盘空间不足
 ## 🔮 使用场景
-### 你想给同事传一份文件,又不想加对方QQ,则可以将文件上传到Stardrop,告诉对方验证码就可以实现传输文件
+### 你想给同事传一份文件,又不想加对方QQ,则可以将文件上传到SwiftSend,告诉对方验证码就可以实现传输文件
 
 # ⚙️ 配置文件
 - 📁 打开 `server_config.json` 文件
@@ -45,15 +45,15 @@ brew install node
 ```
 - 创建一个文件夹,用来存放代码
 ```shell
-mkdir Stardrop
+mkdir SwiftSend
 ```
 - 进入文件夹
 ```shell
-cd Stardrop
+cd SwiftSend
 ```
 - 克隆仓库
 ```shell
-git clone https://github.com/TechnologyWGJ/Stardrop.git
+git clone https://github.com/TechnologyWGJ/SwiftSend.git
 ```
 - `Node.JS` 初始化
 ```shell
