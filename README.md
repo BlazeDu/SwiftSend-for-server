@@ -4,14 +4,14 @@
 English | [简体中文](./README_CH.md) | [繁体中文](./README_CH_Hant.md)
 
 # Introduction
-## Airdrop is an efficient web transfer tool with the following features:
-- Airdrop allows quick file transfer without the need for a client or account.
-- Airdrop can be configured to automatically delete files after a timeout, effectively preventing attackers from maliciously transferring large files to fill up the server's hard disk.
-- Administrators can efficiently manage the service using Airdrop's configuration file.
-- Airdrop supports file size limitation to prevent insufficient disk space.
+## Stardrop is an efficient web transfer tool with the following features:
+- Stardrop allows quick file transfer without the need for a client or account.
+- Stardrop can be configured to automatically delete files after a timeout, effectively preventing attackers from maliciously transferring large files to fill up the server's hard disk.
+- Administrators can efficiently manage the service using Stardrop's configuration file.
+- Stardrop supports file size limitation to prevent insufficient disk space.
 
 ## 🔮 Use Cases
-### When you want to send a file to a colleague without adding them on a messaging platform, you can upload the file to Airdrop and share the verification code for easy file transfer.
+### When you want to send a file to a colleague without adding them on a messaging platform, you can upload the file to Stardrop and share the verification code for easy file transfer.
 
 # ⚙️ Configuration File
 - 📁 Open the `server_config.json` file.
@@ -46,15 +46,15 @@ brew install node
 ```
 - Create a folder to store the code.
 ```shell
-mkdir Airdrop
+mkdir Stardrop
 ```
 - Enter the folder.
 ```shell
-cd Airdrop
+cd Stardrop
 ```
 - Clone the repository.
 ```shell
-git clone https://github.com/TechnologyWGJ/Airdrop.git
+git clone https://github.com/TechnologyWGJ/Stardrop.git
 ```
 - Initialize `Node.js`
 ```shell
