@@ -30,14 +30,14 @@
     }
 }
 ```
-- Port 設置端口
-- Path 設置文件上傳路徑
-- AutoDelete 是否開啟文件自動刪除，true為開啟，false為關閉
-- AutoDeleteTime 設置自動刪除文件的時間
-- CheckFileSize 是否開啟文件大小檢測，true為開啟，false為關閉
-- MaxFileSize 設置文件最大大小
-- MaxRequestNumber 設置用戶1分鐘最大請求次數
-- 可以根據實際情況更改
+- `Port` 設置端口
+- `Path` 設置文件上傳路徑
+- `AutoDelete` 是否開啟文件自動刪除，true為開啟，false為關閉
+- `AutoDeleteTime` 設置自動刪除文件的時間
+- `CheckFileSize` 是否開啟文件大小檢測，true為開啟，false為關閉
+- `MaxFileSize` 設置文件最大大小
+- `MaxRequestNumber` 設置用戶1分鐘最大請求次數
+可以根據實際情況更改
 
 # 部署
 - 安裝 `Node.JS`

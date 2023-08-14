@@ -30,14 +30,14 @@ English | [简体中文](./README_CH.md) | [繁体中文](./README_CH_Hant.md)
     }
 }
 ```
-- Port: Set the port number.
-- Path: Set the file upload path.
-- AutoDelete: Enable or disable automatic file deletion. Set to true to enable and false to disable.
-- AutoDeleteTime: Set the time for automatic file deletion.
-- CheckFileSize: Enable or disable file size checking. Set to true to enable and false to disable.
-- MaxFileSize: Set the maximum file size.
-- MaxRequestNumber: Set the maximum number of requests per minute for each user.
-- You can modify these values based on your specific needs.
+- `Port`: Set the port number.
+- `Path`: Set the file upload path.
+- `AutoDelete`: Enable or disable automatic file deletion. Set to true to enable and false to disable.
+- `AutoDeleteTime`: Set the time for automatic file deletion.
+- `CheckFileSize`: Enable or disable file size checking. Set to true to enable and false to disable.
+- `MaxFileSize`: Set the maximum file size.
+- `MaxRequestNumber`: Set the maximum number of requests per minute for each user.
+You can modify these values based on your specific needs.
 
 # 🛠️ Deployment
 - Install `Node.js`
