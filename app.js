@@ -59,13 +59,21 @@ const limiter = rateLimit({
 // 使用限流器中间件来限制对/upload路由的请求速率
 app.post('/upload', limiter, upload.single('file'), (req, res) => {
     if (!req.file) {
-        res.status(400).json({ error: '没有文件上传' });
+        res.status(400).json(
+            {
+                error: 'not file'
+            }
+        );
         return;
     }
     if (config.File.CheckFileSize)
         if (req.file.size > config.File.MaxFileSize * 1024 * 1024 * 1024) {
             fs.unlinkSync(req.file.path);
-            res.status(400).json({ error: `文件大小不能超过${config.File.MaxFileSize}GB` });
+            res.status(400).json(
+                {
+                    error: `The translated file size must not exceed${config.File.MaxFileSize}GB`
+                }
+            );
             return;
         }
     let verificationCode = generateVerificationCode();
@@ -74,7 +82,12 @@ app.post('/upload', limiter, upload.single('file'), (req, res) => {
     let filePath = `${config.File.Path}/${storedFilename}`;
     fs.renameSync(req.file.path, filePath);
     uploadedFiles[verificationCode] = { storedFilename, originalFilename };
-    res.json({ message: '上传成功', verificationCode });
+    res.json(
+        {
+            message: '上传成功',
+            verificationCode
+        }
+    );
     console.log("上传成功");
     if (config.File.AutoDelete) {
         deleteFileAfterTimeout(verificationCode, config.File.AutoDeleteTime * 60000);
