@@ -5,19 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SwiftSend</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <link rel="stylesheet" href="style.css">
-    <script src="Upload.js"></script>
+    </style>
 </head>
 
 <body>
+    <img src="img/logo.png" alt="logo" width="150" height="150">
+    <!-- 需要添加自适应 -->
     <h1 id="Name">SwiftSend</h1>
-    <h2>一个免费开源的Web传输工具</h2>
     <div class="button-container">
         <button class="button" id="upload" type="button" onclick="Upload()">
-            上传
+            Send
         </button>
+        <script src="Upload.js"></script>
         <button class="button" id="download" type="button" onclick="window.location.href = 'Download.html'">
-            下载
+            Receive
         </button>
     </div>
 </body>
