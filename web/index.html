@@ -15,9 +15,18 @@
     <!-- 需要添加自适应 -->
     <h1 id="Name">SwiftSend</h1>
     <div class="button-container">
-        <button class="button" id="upload" type="button" onclick="Upload()">
-            Send
-        </button>
+        <div id="Send">
+            <button class="button" id="upload" type="button" @click="Send">
+                Send
+            </button>
+            <div class="Alert" v-show="showAlert">
+                <div class="Alert-Content">
+                    <h2>{{Title}}</h2>
+                    <h3>{{Body}}</h3>
+                    <button class="Alert-close" @click="showAlert = false">Close</button>
+                </div>
+            </div>
+        </div>
         <script src="Upload.js"></script>
         <button class="button" id="download" type="button" onclick="window.location.href = 'Download.html'">
             Receive

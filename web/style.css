@@ -13,11 +13,6 @@ body {
     color: #3eb6ed;
     font-size: 3rem;
     margin-top: 20px;
-    /* Adjust the margin-top value to move the heading up */
-}
-
-h2 {
-    color: white;
 }
 
 .button-container {
@@ -36,14 +31,11 @@ h2 {
     border: none;
     margin-bottom: 20px;
     width: 250px;
-    /* Add initial glowing effect */
     box-shadow: 0 0 10px rgb(38, 79, 146);
-    /* Add transition for smooth effect */
     transition: box-shadow 0.3s ease-in-out;
 }
 
 .button:hover {
-    /* Expand glowing effect on hover */
     box-shadow: 0 0 30px rgb(38, 79, 146);
 }
 
@@ -51,7 +43,6 @@ a#return-link {
     position: absolute;
     top: 20px;
     left: 20px;
-    /* Updated left position to move the image to the top left corner */
     width: 40px;
     height: 40px;
     cursor: pointer;
@@ -72,4 +63,23 @@ a#return-link {
     font-size: 2rem;
     text-align: center;
     line-height: 100px;
+}
+
+.Alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Alert-Content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 }
