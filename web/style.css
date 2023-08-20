@@ -65,6 +65,12 @@ a#return-link {
     line-height: 100px;
 }
 
+.right-top {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
 .Alert {
     position: fixed;
     top: 0;

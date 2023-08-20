@@ -1,7 +1,8 @@
-new Vue({
-    el: '#Send',
-    data: {
-        showAlert: false
+Vue.createApp({
+    data() {
+        return {
+            showAlert: false
+        }
     },
     methods: {
         async Send() {
@@ -62,4 +63,23 @@ new Vue({
             }
         }
     }
-});
+}).mount('#Send');
+
+
+Vue.createApp({
+    data() {
+        return {
+            mode: false
+        }
+    },
+    methods: {
+        lightMode() {
+            document.body.style.backgroundColor = '#333';
+            this.mode = false;
+        },
+        darkMode() {
+            document.body.style.backgroundColor = 'white';
+            this.mode = true;
+        }
+    }
+}).mount("#Mode");

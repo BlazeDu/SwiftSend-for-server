@@ -5,12 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SwiftSend</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="vue-code.js"></script>
     <link rel="stylesheet" href="style.css">
     </style>
 </head>
 
-<body>
+<body :style="Body">
+    <div id="Mode" class="right-top">
+        <img @click="darkMode()" v-show="!mode" src="img/dark.png" alt="Dark mode" width="40" height="40">
+        <img @click="lightMode()" v-show="mode" src="img/light.png" alt="Light mode" width="40" height="40">
+    </div>
     <img src="img/logo.png" alt="logo" width="150" height="150">
     <!-- 需要添加自适应 -->
     <h1 id="Name">SwiftSend</h1>
@@ -23,7 +27,7 @@
                 <div class="Alert-Content">
                     <h2>{{Title}}</h2>
                     <h3>{{Body}}</h3>
-                    <button class="Alert-close" @click="showAlert = false">Close</button>
+                    <button class="Alert-Close" @click="showAlert = false">Close</button>
                 </div>
             </div>
         </div>
