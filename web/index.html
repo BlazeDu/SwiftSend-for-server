@@ -23,11 +23,12 @@
             <button class="button" id="upload" type="button" @click="Send">
                 Send
             </button>
-            <div class="Alert" v-show="showAlert">
+            <div class="Alert" v-show="showAlert" @keydown="handleKeyPress" tabindex="0">
                 <div class="Alert-Content">
-                    <h2>{{Title}}</h2>
+                    <h1>{{Title}}</h1>
                     <h3>{{Body}}</h3>
-                    <button class="Alert-Close" @click="showAlert = false">Close</button>
+                    <button class="Alert-Button" @click="showAlert = false">Close</button>
+                    <button class="Alert-Button">Copy</button>
                 </div>
             </div>
         </div>

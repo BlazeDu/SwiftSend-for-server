@@ -5,6 +5,10 @@ Vue.createApp({
         }
     },
     methods: {
+        handleKeyPress(event) {
+            if (event.key === "Escape")
+                this.showAlert = false;
+        },
         async Send() {
             const fileInput = document.createElement('input');
             fileInput.type = 'file';
