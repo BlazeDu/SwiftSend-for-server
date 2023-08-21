@@ -91,7 +91,8 @@ a#return-link {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.Alert-Button {
+.Alert-Button button {
+    padding-right: 10px;
     font-size: 1.5rem;
     border-radius: 15px;
     padding: 10px;

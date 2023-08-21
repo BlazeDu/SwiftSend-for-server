@@ -1,13 +1,12 @@
-Vue.createApp({
+const Alert = Vue.createApp({
     data() {
         return {
             showAlert: false
         }
     },
     methods: {
-        handleKeyPress(event) {
-            if (event.key === "Escape")
-                this.showAlert = false;
+        Copy() {
+            navigator.clipboard.writeText(this.VCode);
         },
         async Send() {
             const fileInput = document.createElement('input');
@@ -40,7 +39,7 @@ Vue.createApp({
                         });
                         const uploadData = await uploadResponse.json();
                         this.Title = "上传成功";
-                        this.Body = "验证码:" + uploadData.verificationCode;
+                        this.VCode = uploadData.verificationCode;
                     }
                 }
                 else
@@ -53,13 +52,13 @@ Vue.createApp({
                     });
                     const uploadData = await uploadResponse.json();
                     this.Title = "上传成功";
-                    this.Body = "验证码:" + uploadData.verificationCode;
+                    this.VCode = uploadData.verificationCode;
                 }
             }
             catch (error)
             {
                 this.Title = "Error";
-                this.Body = "无法获取配置";
+                this.VCode = "无法获取配置";
             }
             finally
             {
@@ -70,7 +69,7 @@ Vue.createApp({
 }).mount('#Send');
 
 
-Vue.createApp({
+const Mode = Vue.createApp({
     data() {
         return {
             mode: false
@@ -87,3 +86,10 @@ Vue.createApp({
         }
     }
 }).mount("#Mode");
+
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape")
+        Alert.showAlert = false;
+    if (Alert.showAlert && (event.metaKey || event.ctrlKey) && event.key === "c")
+        navigator.clipboard.writeText(Alert.VCode);
+});

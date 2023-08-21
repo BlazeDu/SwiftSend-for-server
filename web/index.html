@@ -23,12 +23,14 @@
             <button class="button" id="upload" type="button" @click="Send">
                 Send
             </button>
-            <div class="Alert" v-show="showAlert" @keydown="handleKeyPress" tabindex="0">
+            <div class="Alert" v-show="showAlert">
                 <div class="Alert-Content">
                     <h1>{{Title}}</h1>
-                    <h3>{{Body}}</h3>
-                    <button class="Alert-Button" @click="showAlert = false">Close</button>
-                    <button class="Alert-Button">Copy</button>
+                    <h3>验证码:{{VCode}}</h3>
+                    <div class="Alert-Button">
+                        <button @click="showAlert = false">Close</button>
+                        <button @click="Copy">Copy</button>
+                    </div>
                 </div>
             </div>
         </div>
