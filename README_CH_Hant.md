@@ -1,5 +1,6 @@
 # SwiftSend
-一個免費且開源的網頁傳輸工具。
+
+🔥 一個免費且開源的網頁傳輸工具。
 
 繁体中文 | [简体中文](./README_CH.md) | [English](./README.md)
 
