@@ -77,11 +77,11 @@ app.post('/upload', limiter, upload.single('file'), (req, res) => {
             return;
         }
     let verificationCode = generateVerificationCode();
-    let originalFilename = req.file.originalname;
-    let storedFilename = `${verificationCode}_${originalFilename}`;
+    let fileName = req.body.fileName;
+    let storedFilename = `${verificationCode}_${fileName}`;
     let filePath = `${config.File.Path}/${storedFilename}`;
     fs.renameSync(req.file.path, filePath);
-    uploadedFiles[verificationCode] = { storedFilename, originalFilename };
+    uploadedFiles[verificationCode] = { storedFilename, fileName };
     res.json(
         {
             message: '上传成功',
@@ -111,38 +111,20 @@ app.get('/download', limiter, (req, res) => {
         return;
     }
 
-    let { storedFilename, originalFilename } = fileInfo;
+    let { storedFilename, fileName } = fileInfo;
     let filePath = `${config.File.Path}/${storedFilename}`;
-    res.download(filePath, originalFilename, (err) => {
+    res.download(filePath, fileName, (err) => {
         if (err) {
             console.error('Error downloading file:', err);
             res.status(500).json({ error: '下载失败' });
         }
         else
+        {
+            fs.unlink(filePath, (err) => {
+                if (!err)
+                    delete uploadedFiles[verificationCode];
+            });
             console.log('下载成功');
-    });
-});
-
-app.delete('/delete', limiter, (req, res) => {
-    let verificationCode = req.query.verificationCode;
-    let fileInfo = uploadedFiles[verificationCode];
-
-    if (!fileInfo) {
-        res.status(404).json({ error: '验证码无效' });
-        return;
-    }
-
-    let { storedFilename } = fileInfo;
-    let filePath = `${config.File.Path}/${storedFilename}`;
-
-    // 删除文件
-    fs.unlink(filePath, (err) => {
-        if (err) {
-            console.error('Error deleting file:', err);
-            res.status(500).json({ error: '文件删除失败' });
-        } else {
-            delete uploadedFiles[verificationCode];
-            res.sendStatus(200);
         }
     });
 });

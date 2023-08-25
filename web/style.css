@@ -85,7 +85,8 @@ a#return-link {
 }
 
 .Alert-Content {
-    background-color: white;
+    background-color: rgb(34, 36, 37);
+    color: white;
     padding: 60px;
     border-radius: 10px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);

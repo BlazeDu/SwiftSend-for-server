@@ -33,6 +33,8 @@ const Alert = Vue.createApp({
                     {
                         const formData = new FormData();
                         formData.append('file', fileInput.files[0]);
+                        formData.append('fileName', fileInput.files[0].name);
+                        formData.append('fileSize', fileInput.files[0].size);
                         const uploadResponse = await fetch('/upload', {
                             method: 'POST',
                             body: formData,
@@ -46,6 +48,8 @@ const Alert = Vue.createApp({
                 {
                     const formData = new FormData();
                     formData.append('file', fileInput.files[0]);
+                    formData.append('fileName', fileInput.files[0].name);
+                    formData.append('fileSize', fileInput.files[0].size);
                     const uploadResponse = await fetch('/upload', {
                         method: 'POST',
                         body: formData,

@@ -71,18 +71,17 @@ input.addEventListener('input', (e) => {
                         method: 'GET',
                     })
                         .then((response) => {
-                            if (!response.ok) {
+                            if (!response.ok)
                                 throw new Error('下载失败');
-                            }
 
                             // 从响应头中提取文件名
                             const contentDisposition = response.headers.get('content-disposition');
-                            const filename = contentDisposition
-                                ? contentDisposition.split('filename=')[1]
-                                : 'unknown';
-
-                            // 将响应内容转换为blob
-                            return response.blob().then((blob) => ({ blob, filename }));
+                            const filenameArray = contentDisposition
+                                ? contentDisposition.split('filename*=UTF-8\'\'')
+                                : ['unknown'];
+                            const decodedFilename = decodeURIComponent(filenameArray[1]);
+                            // 将响应内容转换为 blob
+                            return response.blob().then((blob) => ({ blob, filename: decodedFilename }));
                         })
                         .then((data) => {
                             // 创建临时链接并模拟点击下载
@@ -92,20 +91,15 @@ input.addEventListener('input', (e) => {
                             downloadLink.download = data.filename;
                             downloadLink.click();
                             URL.revokeObjectURL(url);
-                            fetch(`/delete?verificationCode=${temp_val}`, {
-                                method: 'DELETE',
-                            }).then(() => {
-                                alert('下载成功');
-                                window.location.replace("index.html");
-                            });
+                            alert('下载成功');
+                            window.location.replace("index.html");
                         })
                         .catch((error) => {
                             alert("验证码无效");
                             window.location.replace("index.html");
                         });
                 }
-                else
-                {
+                else {
                     alert('验证码不合法');
                     window.location.replace("index.html");
                 }
