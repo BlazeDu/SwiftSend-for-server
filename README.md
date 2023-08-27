@@ -56,9 +56,9 @@ cd SwiftSend
 ```shell
 git clone https://github.com/TechnologyWGJ/SwiftSend.git
 ```
-- Initialize `Node.js`
+- Initialize `npm`
 ```shell
-node init
+npm init
 ```
 - Install dependencies
 ```shell
