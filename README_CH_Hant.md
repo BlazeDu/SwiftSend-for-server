@@ -57,9 +57,9 @@ cd SwiftSend
 ```shell
 git clone https://github.com/TechnologyWGJ/SwiftSend.git
 ```
-- `Node.JS` 初始化
+- `npm` 初始化
 ```shell
-node init
+npm init
 ```
 - 安裝依賴
 ```shell
